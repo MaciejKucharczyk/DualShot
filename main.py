@@ -10,13 +10,16 @@ def main():
     edge_detection_thread.start()
 
     speed = [1, 1]
-    ball = Ball(20, 20, speed, 10)
+    ball = Ball(50, 20, speed, 10)
     while True:
         edges = edge_detection_thread.get_edges()
 
         if edges is not None:
             frame = camera_thread.get_frame()
             window_height, window_width = frame.shape[:2]
+            # Pobranie rozmiarów ramki
+            # window_width = int(frame.get(cv2.CAP_PROP_FRAME_WIDTH))
+            # window_height = int(frame.get(cv2.CAP_PROP_FRAME_HEIGHT))
             if frame is not None:
                 edges_resized = cv2.resize(edges, (frame.shape[1], frame.shape[0]))
                 frame_with_edges = cv2.addWeighted(frame, 0.5, edges_resized, 0.5, 0)
@@ -26,7 +29,6 @@ def main():
                 # ball.move(speed)
                 # ball.WindowDetection(window_height, window_width)
                 ball.run(speed, window_width, window_height)
-                print(speed)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
