@@ -3,6 +3,7 @@ from CameraThread import CameraThread
 from EdgeDetectionThread import EdgeDetectionThread
 from Ball import Ball
 
+
 def main():
     camera_thread = CameraThread()
     camera_thread.start()
