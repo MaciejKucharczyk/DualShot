@@ -1,7 +1,7 @@
 import cv2
 from CameraThread import CameraThread
 from EdgeDetectionThread import EdgeDetectionThread
-from ball import Ball
+from Ball import Ball
 
 def main():
     camera_thread = CameraThread()
