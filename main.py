@@ -10,7 +10,7 @@ def main():
     edge_detection_thread.start()
 
     speed = [1, 1]
-    ball = Ball(100, 50, speed, 20)
+    ball = Ball(100, 50, speed, 2)
 
     while True:
         edges = edge_detection_thread.get_edges()

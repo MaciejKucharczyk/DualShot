@@ -33,4 +33,3 @@ class Ball:
         if cv2.countNonZero(intersection) > 0:
             self.speed[0] *= -1
             self.speed[1] *= -1
-
