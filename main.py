@@ -10,7 +10,7 @@ def main():
     edge_detection_thread = EdgeDetectionThread(camera_thread)
     edge_detection_thread.start()
 
-    speed = [1, 1]
+    speed = [1, 2]
     ball = Ball(100, 50, speed, 2)
 
     while True:
@@ -28,7 +28,7 @@ def main():
             ball.move()  # Porusz piłką
             ball.detect_collision(edges)  # Wykrywaj kolizje z krawędziami
             
-            cv2.circle(frame, (ball.x_pos, ball.y_pos), ball.radius, (0,255,0), thickness=-1)
+            cv2.circle(frame, (ball.x_pos, ball.y_pos), ball.radius, (0, 255, 0), thickness=-1)
             
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
