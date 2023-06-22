@@ -1,2 +1,2 @@
 # DualShot
-Multithreading application which can do crazy things with photos
+Multithreading application which can detect edges on you and bounce the ball

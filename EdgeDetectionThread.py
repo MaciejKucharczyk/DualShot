@@ -14,9 +14,9 @@ class EdgeDetectionThread(threading.Thread):
             frame = self.camera_thread.get_frame()
             if frame is not None:
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                # edges = cv2.Canny(gray, 50, 150)
-                edges = cv2.Canny(gray, 200, 600)
-                edges = cv2.dilate(edges, None, iterations=3)
+                # edges = cv2.Canny(gray, 50, 150) # wincyj krawedziow
+                edges = cv2.Canny(gray, 200, 600) # mniej krawedziow
+                edges = cv2.dilate(edges, None, iterations=2) # przy iteration=3 krawedzie sa grubsze niz ja
                 edges_colored = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
                 edges_colored[np.where((edges_colored == [255, 255, 255]).all(axis=2))] = [0, 0, 255]
                 self.edges = edges_colored

@@ -11,8 +11,10 @@ def main():
     edge_detection_thread.start()
 
     speed = [1, 2]
-    ball = Ball(100, 50, speed, 2)
-
+    ball = Ball(100, 50, speed, 2)  # x_pos, y_pos, speed, radius
+    # window_height, window_width = frame.shape[:2]  # Ustaw rozmiary okna na rozmiary ramki
+    # ball.set_window_size(window_width, window_height)  # Ustaw rozmiary okna w obiekcie piłki
+    ball.start()
     while True:
         edges = edge_detection_thread.get_edges()
 
@@ -27,8 +29,15 @@ def main():
             
             ball.move()  # Porusz piłką
             ball.detect_collision(edges)  # Wykrywaj kolizje z krawędziami
-            
-            cv2.circle(frame, (ball.x_pos, ball.y_pos), ball.radius, (0, 255, 0), thickness=-1)
+
+            # color = frame[ball.y_pos, ball.x_pos] # pobieramy kolor tla 
+            # nadajemy ten kolor pilce, ale lekko zmieniony
+            # color[0]+= 10
+            # color[1]-=10
+            # color[2]-= 10
+            # print(color[0])
+            # cv2.circle(frame, (ball.x_pos, ball.y_pos), ball.radius, (color[0], color[1], color[2]), thickness=-1)
+            cv2.circle(frame, (ball.x_pos, ball.y_pos), ball.radius, (0, 255, 255), thickness=-1)
             
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

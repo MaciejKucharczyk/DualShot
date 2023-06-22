@@ -19,4 +19,6 @@ class CameraThread(threading.Thread):
         self.running = False
 
     def get_frame(self):
+        flipped_frame = cv2.flip(self.frame, 1)
         return self.frame
+        # return flipped_frame

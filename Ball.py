@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
+import threading
 
-class Ball:
+class Ball(threading.Thread):
     def __init__(self, x_pos, y_pos, speed, radius):
+        super(Ball, self).__init__()
         self.x_pos = x_pos
         self.y_pos = y_pos
         self.speed = speed
@@ -33,3 +35,7 @@ class Ball:
         if cv2.countNonZero(intersection) > 0:
             self.speed[0] *= -1
             self.speed[1] *= -1
+
+    def run(self, edges):
+        self.move()
+        self.detect_collision(edges)
